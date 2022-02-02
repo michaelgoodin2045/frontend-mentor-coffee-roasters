@@ -1,0 +1,20 @@
+@use '../base/' as *;
+@use '../abstracts/' as a;
+
+body {
+  width: 100vw;
+  height: fit-content;
+  background: $clr--light-cream;
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+  }
+  & .App {
+    width: clamp(320px, calc(20rem + ((1vw - 3.2px) * 100)), 739px);
+    height: fit-content;
+    margin-inline: auto;
+    background: $clr--light-cream;
+  }
+}

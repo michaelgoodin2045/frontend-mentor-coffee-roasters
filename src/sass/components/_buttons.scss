@@ -1,0 +1,28 @@
+@use '../base/' as *;
+@use '../abstracts/' as a;
+
+.cyan-btn {
+  padding: 0.9375rem 1.9375rem;
+  border: 0;
+  border-radius: 6px;
+  background-color: $clr--dark-cyan;
+  color: $clr--light-cream;
+  transition: all 200ms ease-in-out;
+  &:hover {
+    background-color: $clr--light-cyan;
+    transform: scale(1.05);
+  }
+}
+.order-btn {
+  padding: 0.9375rem 1.9375rem;
+  border: 0;
+  border-radius: 6px;
+  background-color: $clr--disabled;
+  color: $clr--light-cream;
+  transition: all 200ms ease-in-out;
+  cursor: default;
+  &.enable {
+    background-color: $clr--dark-cyan;
+    cursor: pointer;
+  }
+}

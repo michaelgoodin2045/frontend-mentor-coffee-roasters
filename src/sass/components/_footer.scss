@@ -1,0 +1,65 @@
+@use '../base/' as *;
+@use '../abstracts/' as a;
+
+.Footer {
+  width: 100%;
+  height: 346px;
+  margin-top: 120px;
+  margin-bottom: 72px;
+  & .footer-container {
+    width: 327px;
+    height: 346px;
+    margin-inline: auto;
+    background: $clr--dark-gray-blue;
+    padding: 54px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    & .NavLinks {
+      width: 122px;
+      height: 93px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      & .nav-link {
+        font-family: $ff--barlow;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.92px;
+        line-height: 0.9375rem;
+        text-transform: uppercase;
+        & a {
+          color: $clr--gray;
+          text-decoration: none;
+          &:hover {
+            color: $clr--light-cream;
+          }
+        }
+      }
+    }
+    & .Socials {
+      width: 120px;
+      height: 24px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      & .social-item {
+        & a {
+          & img {
+            width: 24px;
+            height: 24px;
+            &:hover {
+              transform: scale(1.2);
+              filter: brightness(0) saturate(100%) invert(88%) sepia(17%)
+                saturate(906%) hue-rotate(316deg) brightness(102%)
+                contrast(103%);
+            }
+          }
+        }
+      }
+    }
+  }
+}

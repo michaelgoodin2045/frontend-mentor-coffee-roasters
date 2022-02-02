@@ -1,0 +1,55 @@
+@use '../base/' as *;
+@use '../abstracts/' as a;
+
+.About {
+  & .SharedHero {
+    background-image: linear-gradient(
+        (to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1))
+      ),
+      url('../assets/about/mobile/image-hero-whitecup.jpg');
+    background-position: center;
+    background-size: contain;
+    border-radius: 10px;
+  }
+}
+
+.Subscribe {
+  & .SharedHero {
+    background-image: linear-gradient(
+        (to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1))
+      ),
+      url('../assets/plan/mobile/image-hero-blackcup.jpg');
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+    & .viewport {
+      padding: 101px 24px 87px 24px;
+      justify-content: flex-start;
+      & .title {
+        & h3 {
+          font-size: 40px;
+          margin-bottom: 24px;
+        }
+      }
+    }
+  }
+}
+
+.SharedHero {
+  width: 327px;
+  height: fit-content;
+  margin-inline: auto;
+  & .viewport {
+    width: 100%;
+    height: 400px;
+    padding: 111px 24px 87px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: $clr--light-cream;
+    & .blurb-box {
+      text-align: center;
+    }
+  }
+}

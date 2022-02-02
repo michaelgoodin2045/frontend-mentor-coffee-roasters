@@ -1,0 +1,34 @@
+@use '../base/' as *;
+@use '../abstracts/' as a;
+
+.Hero {
+  width: 327px;
+  height: fit-content;
+  margin-inline: auto;
+  & .viewport {
+    height: 500px;
+    padding: 100px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: $clr--light-cream;
+    background-image: linear-gradient(
+        (to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1))
+      ),
+      url('../assets/home/mobile/image-hero-coffeepress.jpg');
+    background-position: center;
+    background-size: contain;
+    border-radius: 10px;
+    & .title {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    & .blurb-box {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+  }
+}

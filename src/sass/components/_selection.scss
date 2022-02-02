@@ -1,0 +1,13 @@
+@use '../base/' as *;
+@use '../abstracts/' as a;
+
+.Selection {
+  width: 375px;
+  height: fit-content;
+  margin-top: 120px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}

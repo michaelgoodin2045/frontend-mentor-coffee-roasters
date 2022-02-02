@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&display=swap');
+
+$ff--fraunces: 'Fraunces', serif;
+$ff--barlow: 'Barlow', sans-serif;
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  font-family: $ff--fraunces;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 900;
+  font-family: $ff--fraunces;
+  line-height: 3rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+  font-weight: 900;
+  font-family: $ff--fraunces;
+}
+
+h4 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  font-family: $ff--fraunces;
+  line-height: 2rem;
+}
+
+//Button Text
+h5 {
+  font-size: 1.125rem;
+  font-weight: 900;
+  font-family: $ff--fraunces;
+  line-height: 1.5625;
+}
+
+p {
+  font-size: 0.9375rem;
+  font-weight: 400;
+  font-family: $ff--barlow;
+  line-height: 1.5625;
+}

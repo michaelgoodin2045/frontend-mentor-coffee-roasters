@@ -1,0 +1,45 @@
+@use '../base/' as *;
+@use '../abstracts/' as a;
+
+.Locations {
+  width: 327px;
+  height: fit-content;
+  margin-top: 120px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  & .title {
+    color: $clr--gray;
+    margin-bottom: 72px;
+  }
+  & .LocationsCard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    & .card {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      color: $clr--dark-gray-blue;
+      margin-bottom: 80px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      p {
+        font-size: 1rem;
+        line-height: 1.625rem;
+      }
+      & .location-image {
+        margin-bottom: 48px;
+      }
+      & .location-name {
+        margin-bottom: 22px;
+      }
+    }
+  }
+}
