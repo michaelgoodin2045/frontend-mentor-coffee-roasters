@@ -3,6 +3,8 @@
     "id": 11,
     "question": "How do you drink your coffee?",
     "name": "prepare",
+    "number": "01",
+    "title": "Preferences",
     "options": [
       {
         "id": 20,
@@ -28,6 +30,8 @@
     "id": 12,
     "question": "What type of coffee?",
     "name": "beans",
+    "number": "02",
+    "title": "Bean Type",
     "options": [
       {
         "id": 30,
@@ -53,6 +57,8 @@
     "id": 13,
     "question": "How much would you like?",
     "name": "quantity",
+    "number": "03",
+    "title": "Quantity",
     "options": [
       {
         "id": 40,
@@ -78,6 +84,8 @@
     "id": 14,
     "question": "Want us to grind them?",
     "name": "grind",
+    "number": "04",
+    "title": "Grind Options",
     "options": [
       {
         "id": 50,
@@ -103,23 +111,25 @@
     "id": 15,
     "question": "How often should we deliver?",
     "name": "delivery",
+    "number": "05",
+    "title": "Deliveries",
     "options": [
       {
         "id": 60,
-        "type": "Every week",
-        "brief": "Every week",
+        "type": "Every Week",
+        "brief": "Every Week",
         "description": "$7.20 per shipment. Includes free first-class shipping"
       },
       {
         "id": 61,
-        "type": "Every 2 weeks",
-        "brief": "Every 2 weeks",
+        "type": "Every 2 Weeks",
+        "brief": "Every 2 Weeks",
         "description": "$9.60 per shipment. Includes free priority shipping"
       },
       {
         "id": 62,
-        "type": "Every month",
-        "brief": "Every month",
+        "type": "Every Month",
+        "brief": "Every Month",
         "description": "$12.00 per shipment. Includes free priority shipping"
       }
     ]

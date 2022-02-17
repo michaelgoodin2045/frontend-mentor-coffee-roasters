@@ -1,0 +1,6 @@
+$width-lap: clamp(890px, calc(55.625rem + ((1vw - 9.8px) * 78.0564)), 1139px);
+$width-desk: clamp(
+  1139px,
+  calc(71.1875rem + ((1vw - 13px) * 100.7143)),
+  1280px
+);

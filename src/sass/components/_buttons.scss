@@ -13,6 +13,18 @@
     transform: scale(1.05);
   }
 }
+
+.HowItWorks {
+  .cyan-btn {
+    @include a.breakpoint(tablet) {
+      padding: 1em 1.5em;
+    }
+    @include a.breakpoint(laptop) {
+      padding: 0.9375em 1.9375em;
+      margin-bottom: 32px;
+    }
+  }
+}
 .order-btn {
   padding: 0.9375rem 1.9375rem;
   border: 0;
@@ -21,8 +33,31 @@
   color: $clr--light-cream;
   transition: all 200ms ease-in-out;
   cursor: default;
+  @include a.breakpoint(tablet) {
+    padding: 1rem 2.4375rem;
+    margin-bottom: 72px;
+  }
+  @include a.breakpoint(laptop) {
+    margin-bottom: 0;
+  }
   &.enable {
     background-color: $clr--dark-cyan;
     cursor: pointer;
+  }
+}
+
+.modal-btn {
+  padding: 0.9375rem 1.9375rem;
+  border: 0;
+  border-radius: 6px;
+  background-color: $clr--dark-cyan;
+  color: $clr--light-cream;
+  transition: all 200ms ease-in-out;
+  @include a.breakpoint(tablet) {
+    padding: 0.9375rem 4rem;
+  }
+  &:hover {
+    background-color: $clr--light-cyan;
+    transform: scale(1.05);
   }
 }

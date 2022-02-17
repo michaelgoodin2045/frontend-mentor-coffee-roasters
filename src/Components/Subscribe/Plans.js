@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import plans from '../../data/plans.json';
 import Arrow from './Arrow';
+import Modal from './Modal';
 import Summary from './Summary';
+import Button from '../Button';
 
-const Plans = () => {
+const Plans = ({ activeIndex, setActiveIndex }) => {
   const initialState = {
     prepare: null,
     beans: null,
@@ -16,7 +18,13 @@ const Plans = () => {
   const [openOptions, setOpenOptions] = useState(false);
   const [arrowDisable, setArrowDisable] = useState(false);
   const [orderButton, setOrderButton] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [grindSummary, setGrindSummary] = useState(true);
+  const [isAs, setIsAs] = useState('as');
+  const [openModal, setOpenModal] = useState(false);
+  const [shipmentPrice, setShipmentPrice] = useState(0);
   const space = '_____';
+  const value = 'Create my plan!';
 
   const prepare = orderData.prepare === null ? space : orderData.prepare;
   const beans = orderData.beans === null ? space : orderData.beans;
@@ -25,64 +33,139 @@ const Plans = () => {
   const delivery = orderData.delivery === null ? space : orderData.delivery;
 
   //Enable Order Button
+
   useEffect(() => {
-    if (
-      orderData.prepare !== null &&
-      orderData.beans !== null &&
-      orderData.quantity !== null &&
-      orderData.delivery !== null
-    ) {
-      setOrderButton(true);
-    }
-    console.log(orderButton);
-  }, [orderData, orderButton]);
+    setOrderButton(() => {
+      if (
+        orderData.prepare === 'Capsules' &&
+        orderData.beans !== null &&
+        orderData.quantity !== null &&
+        orderData.delivery !== null
+      ) {
+        return setOrderButton(true);
+      } else if (
+        orderData.prepare !== null &&
+        orderData.prepare !== 'Capsules' &&
+        orderData.beans !== null &&
+        orderData.quantity !== null &&
+        orderData.grind !== null &&
+        orderData.delivery !== null
+      ) {
+        return setOrderButton(true);
+      } else {
+        return setOrderButton(false);
+      }
+    });
+  }, [orderData]);
+  useEffect(() => {
+    setIsDisabled(() => {
+      if (
+        orderData.prepare === 'Capsules' &&
+        orderData.beans !== null &&
+        orderData.quantity !== null &&
+        orderData.delivery !== null
+      ) {
+        return setIsDisabled(false);
+      } else if (
+        orderData.prepare !== null &&
+        orderData.prepare !== 'Capsules' &&
+        orderData.beans !== null &&
+        orderData.quantity !== null &&
+        orderData.grind !== null &&
+        orderData.delivery !== null
+      ) {
+        return setIsDisabled(false);
+      } else {
+        return setIsDisabled(true);
+      }
+    });
+  }, [orderData]);
+
+  useEffect(() => {
+    setShipmentPrice(() => {
+      if (orderData.quantity === '250g') {
+        return setShipmentPrice(
+          orderData.delivery === 'Every Week'
+            ? (720 * 4) / 100
+            : orderData.delivery === 'Every 2 Weeks'
+            ? (960 * 2) / 100
+            : 1200 / 100
+        );
+      } else if (orderData.quantity === '500g') {
+        return setShipmentPrice(
+          orderData.delivery === 'Every Week'
+            ? (1300 * 4) / 100
+            : orderData.delivery === 'Every 2 Weeks'
+            ? (1750 * 2) / 100
+            : 2200 / 100
+        );
+      } else {
+        return setShipmentPrice(
+          orderData.delivery === 'Every Week'
+            ? (2200 * 4) / 100
+            : orderData.delivery === 'Every 2 Weeks'
+            ? (3200 * 2) / 100
+            : 4200 / 100
+        );
+      }
+    });
+  }, [shipmentPrice, orderData.delivery, orderData.quantity]);
+
   //Open Options Menu
 
   const handleOptions = (e) => {
     setOpenOptions(!openOptions);
     const question = e.target;
-    //console.log(question);
     const parent = question.parentElement;
-    //console.log(parent);
-    //const attribute = parent.getAttribute('data-target');
-    //console.log(attribute);
     const targetDiv = parent.nextSibling;
     const targetArrow = parent.lastChild;
-    //console.log(targetDiv);
-    //console.log(targetArrow);
+    targetDiv.classList.toggle('open');
+    targetArrow.classList.toggle('rotate');
+  };
+
+  const handleArrow = (e) => {
+    const arrowTarget = e.target;
+    const arrowParent = arrowTarget.parentElement;
+    const questionDiv = arrowParent.parentElement;
+    const targetDiv = questionDiv.nextSibling;
+    const targetArrow = questionDiv.lastChild;
     targetDiv.classList.toggle('open');
     targetArrow.classList.toggle('rotate');
   };
 
   //Select preferences for order
   const handleOrder = (e) => {
-    //console.log(e.target);
     const { name, id } = e.target;
     setOrderData({ ...orderData, [name]: id });
-    //console.log(name);
-    //console.log(id);
-    console.log(orderData);
+
     const prepareSelection = Array.from(
       document.querySelectorAll("input[name='prepare']")
     );
-    //console.log(prepareSelection);
+
     const grindType = document.getElementById('question14');
     const grindOptions = document.querySelector('.option14');
 
     const capsuleSelected = prepareSelection.filter(
       (selection) => selection.checked && selection.id === 'Capsules'
     );
-    //console.log(capsuleSelected);
+
     if (capsuleSelected.length > 0) {
       grindType.classList.add('disable');
       grindOptions.classList.add('disable');
-
       setArrowDisable(true);
+      setIsAs('using');
+      setGrindSummary(false);
     } else {
       grindType.classList.remove('disable');
       setArrowDisable(false);
+      setIsAs('as');
+      setGrindSummary(true);
       grindOptions.classList.remove('disable');
     }
+  };
+
+  const handleModal = () => {
+    setOpenModal(true);
   };
 
   return (
@@ -90,17 +173,17 @@ const Plans = () => {
       <div className="container">
         {plans.map((plan, index) => {
           return (
-            <div className="plan-box" key={index}>
-              <div
-                className={`question`}
-                id={`question${plan.id}`}
-                onClick={handleOptions}
-              >
-                <h4>{plan.question}</h4>
-                <div className="arrow">
-                  <Arrow arrowDisable={arrowDisable} />
-                </div>
+            <div
+              className={activeIndex === index ? 'plan-box active' : 'plan-box'}
+              id={`plan${plan.id}`}
+              key={index}
+              onMouseOver={() => setActiveIndex(index)}
+            >
+              <div className={`question`} id={`question${plan.id}`}>
+                <h4 onClick={handleOptions}>{plan.question}</h4>
+                <Arrow arrowDisable={arrowDisable} handleGuess={handleArrow} />
               </div>
+
               <div className={`option-items option${plan.id}`}>
                 {plan.options.map((option) => {
                   return (
@@ -130,100 +213,40 @@ const Plans = () => {
             </div>
           );
         })}
+        <Summary
+          prepare={prepare}
+          beans={beans}
+          quantity={quantity}
+          grind={grind}
+          delivery={delivery}
+          isAs={isAs}
+          grindSummary={grindSummary}
+        />
+        <div className="btn-box">
+          <Button
+            value={value}
+            btnClass={`order-btn ${orderButton ? 'enable' : ''}`}
+            disabled={isDisabled}
+            onClick={handleModal}
+          />
+        </div>
       </div>
-      <Summary
+
+      <Modal
         prepare={prepare}
         beans={beans}
         quantity={quantity}
         grind={grind}
         delivery={delivery}
-        orderButton={orderButton}
+        isAs={isAs}
+        grindSummary={grindSummary}
+        openModal={openModal}
+        shipmentPrice={shipmentPrice}
+        disabled={false}
+        setOpenModal={setOpenModal}
       />
     </div>
   );
 };
 
 export default Plans;
-
-/*
-{plans.map((item, index) => {
-          return (
-            <div className={`card C${index + 1}`} key={index}>
-              <div className="title">
-                <h2>{item.criteria}</h2>
-              </div>
-              <div className="options">
-                <div
-                  className={`option-item one ${selectOne ? 'active' : ''}`}
-                  onClick={activeOne}
-                >
-                  <div className="title">
-                    <h4>{item.options.one.title}</h4>
-                  </div>
-                  <div className="description">
-                    <p>{item.options.one.description}</p>
-                  </div>
-                </div>
-                <div
-                  className={`option-item two ${selectTwo ? 'active' : ''}`}
-                  onClick={activeTwo}
-                >
-                  <div className="title">
-                    <h4>{item.options.two.title}</h4>
-                  </div>
-                  <div className="description">
-                    <p>{item.options.two.description}</p>
-                  </div>
-                </div>
-                <div
-                  className={`option-item three ${selectThree ? 'active' : ''}`}
-                  onClick={activeThree}
-                >
-                  <div className="title">
-                    <h4>{item.options.three.title}</h4>
-                  </div>
-                  <div className="description">
-                    <p>{item.options.three.description}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-*/
-/*const [selectOne, setSelectOne] = useState(false);
-  const [selectTwo, setSelectTwo] = useState(false);
-  const [selectThree, setSelectThree] = useState(false);
-
-  const activeOne = () => {
-    setSelectOne((prev) => !prev);
-    setSelectTwo(false);
-    setSelectThree(false);
-  };
-
-  const activeTwo = () => {
-    setSelectOne(false);
-    setSelectTwo((prev) => !prev);
-    setSelectThree(false);
-  };
-
-  const activeThree = () => {
-    setSelectOne(false);
-    setSelectTwo(false);
-    setSelectThree((prev) => !prev);
-  }; */
-
-/*
-  const [openOption11, setOpenOption11] = useState(false);
-  const [openOptionTwo, setOpenOptionTwo] = useState(false);
-  const [openOptionThree, setOpenOptionThree] = useState(false);
-  const [openOptionFour, setOpenOptionFour] = useState(false);
-  const [openOptionFive, setOpenOptionFive] = useState(false);
-
-  //Toggle Options
-
-  const handleOptions = () => {
-    setOpenOption11((prev) => !prev);
-    console.log('Clicked!');
-  };
-  */

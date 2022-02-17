@@ -16,5 +16,8 @@ body {
     height: fit-content;
     margin-inline: auto;
     background: $clr--light-cream;
+    @include a.breakpoint(tablet) {
+      width: 100%;
+    }
   }
 }

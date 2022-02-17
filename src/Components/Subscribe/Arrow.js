@@ -1,17 +1,11 @@
 import React from 'react';
+import arrow from '../../assets/arrow.svg';
 
-const Arrow = ({ arrowDisable }) => {
+const Arrow = ({ arrowDisable, handleArrow }) => {
   return (
-    <>
-      <svg width="19" height="13" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M15.949.586l2.828 2.828-9.096 9.096L.586 3.414 3.414.586l6.267 6.267z"
-          fill="#0E8784"
-          fillRule="nonzero"
-          id={`${arrowDisable ? 'disable' : ''}`}
-        />
-      </svg>
-    </>
+    <div className="arrow" onClick={handleArrow}>
+      <img src={arrow} alt="" className={`${arrowDisable ? 'disable' : ''}`} />
+    </div>
   );
 };
 

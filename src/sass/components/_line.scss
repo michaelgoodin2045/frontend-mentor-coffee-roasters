@@ -1,0 +1,83 @@
+@use '../base/' as *;
+@use '../abstracts/' as a;
+
+.circles {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  & .circle {
+    width: 28px;
+    height: 35px;
+    background: transparent;
+    border: 2px solid $clr--dark-cyan;
+    border-radius: 50%;
+    @include a.breakpoint(laptop) {
+      width: 31px;
+      height: 31px;
+    }
+  }
+  & .line {
+    position: relative;
+    background-color: transparent;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: 26px;
+      width: 182px;
+      height: 2px;
+      background-color: $clr--pale-orange;
+      @include a.breakpoint(laptop) {
+        top: 13px;
+        left: 29px;
+        width: clamp(178px, calc(11.125rem + ((1vw - 9.8px) * 48.75)), 334px);
+      }
+    }
+  }
+}
+
+.line-insert-choices {
+  width: 497px;
+  height: 31px;
+  margin: 97px 0 48px 40px;
+  @include a.breakpoint(laptop) {
+    margin: 100px 0 82px 85px;
+    width: clamp(497px, calc(31.0625rem + ((1vw - 9.8px) * 82.1875)), 760px);
+  }
+  & .circles {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    & .circle {
+      width: 31px;
+      height: 31px;
+      background: transparent;
+      border: 2px solid $clr--dark-cyan;
+      border-radius: 50%;
+    }
+    & .line {
+      position: relative;
+      background-color: transparent;
+      &::after {
+        content: '';
+        position: absolute;
+        top: 13px;
+        left: 14px;
+        width: 233.5px;
+        height: 2px;
+        background-color: $clr--pale-orange;
+        @include a.breakpoint(laptop) {
+          width: clamp(
+            233.5px,
+            calc(14.59375rem + ((1vw - 9.8px) * 41.0938)),
+            365px
+          );
+        }
+      }
+    }
+  }
+}

@@ -4,4 +4,6 @@
 .Home {
   width: 100%;
   height: fit-content;
+  @include a.breakpoint(laptop) {
+  }
 }

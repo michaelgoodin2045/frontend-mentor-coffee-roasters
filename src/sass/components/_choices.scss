@@ -2,7 +2,7 @@
 @use '../abstracts/' as a;
 
 .Choices {
-  width: 375px;
+  width: clamp(327px, calc(20.4375rem + ((1vw - 3.27px) * 100)), 375px);
   height: 1028px;
   margin-top: 120px;
   margin-inline: auto;
@@ -12,6 +12,24 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @include a.breakpoint(tablet) {
+    width: unset;
+    max-width: 780px;
+    height: 640px;
+    margin-top: 144px;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  @include a.breakpoint(laptop) {
+    max-width: unset;
+    width: a.$width-lap;
+    height: 653px;
+    margin-top: 168px;
+    border-radius: 0;
+  }
+  @include a.breakpoint(desktop) {
+    width: a.$width-desk;
+  }
   & .container {
     width: 327px;
     height: 868px;
@@ -20,6 +38,24 @@
     justify-content: space-between;
     align-items: center;
     text-align: center;
+    @include a.breakpoint(tablet) {
+      width: 689px;
+      height: 473px;
+      margin-inline: auto;
+      flex-direction: row;
+      align-items: flex-start;
+      text-align: left;
+    }
+    @include a.breakpoint(laptop) {
+      width: calc(100% - 85px);
+      height: 453px;
+      margin-inline: unset;
+      padding-left: 85px;
+    }
+    @include a.breakpoint(desktop) {
+      width: 1280px;
+      padding-right: 55px;
+    }
     & .card {
       width: 100%;
       height: 252px;
@@ -27,17 +63,65 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
+      @include a.breakpoint(tablet) {
+        width: 223px;
+        height: 367px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        &:last-child {
+          padding-right: 24px;
+        }
+      }
+      @include a.breakpoint(laptop) {
+        width: clamp(223px, calc(13.9375rem + ((1vw - 9.8px) * 19.375)), 285px);
+        margin-right: clamp(
+          1px,
+          calc(0.0625rem + ((1vw - 9.8px) * 29.375)),
+          95px
+        );
+        &:last-child {
+          padding-right: unset;
+        }
+      }
+
       & .choice-number {
         font-family: $ff--fraunces;
         font-size: 4.5rem;
         font-weight: 900;
         color: $clr--pale-orange;
+        @include a.breakpoint(tablet) {
+          margin-bottom: 42px;
+        }
+        @include a.breakpoint(laptop) {
+          margin-bottom: 37px;
+        }
       }
       & .name {
         color: $clr--light-cream;
+        margin-bottom: 38px;
+        @include a.breakpoint(laptop) {
+          margin-bottom: 41px;
+          width: 255px;
+          & h3 {
+            font-size: 2rem;
+            line-height: 2.375rem;
+          }
+        }
       }
       & .blurb-box {
         color: $clr--light-cream;
+        @include a.breakpoint(laptop) {
+          & p {
+            font-size: 0.9375rem;
+            line-height: 1.5625rem;
+          }
+        }
+        @include a.breakpoint(desktop) {
+          & p {
+            font-size: 1rem;
+            line-height: 1.625rem;
+          }
+        }
       }
     }
   }

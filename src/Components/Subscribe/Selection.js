@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SelectMenu from './SelectMenu';
 import Plans from './Plans';
 import MediaQuery from 'react-responsive/';
 
 const Selection = () => {
+  const [activeIndex, setActiveIndex] = useState(null);
+
   return (
     <div className="Selection">
-      <MediaQuery minWidth={740}>
-        <SelectMenu />
+      <MediaQuery minWidth={980}>
+        <SelectMenu activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
       </MediaQuery>
-      <Plans />
+      <Plans activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
     </div>
   );
 };

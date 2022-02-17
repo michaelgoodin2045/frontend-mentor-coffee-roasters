@@ -1,9 +1,10 @@
 import React from 'react';
 import Button from '../Button';
 
-const Hero = () => {
+const Hero = ({ routeChange }) => {
   const value = 'Create your plan';
   const btnClass = 'cyan-btn';
+
   return (
     <div className="Hero">
       <div className="viewport">
@@ -19,7 +20,12 @@ const Hero = () => {
           </p>
         </div>
         <div className="hero-btn-box">
-          <Button value={value} btnClass={btnClass} />
+          <Button
+            value={value}
+            btnClass={btnClass}
+            disabled={false}
+            onClick={routeChange}
+          />
         </div>
       </div>
     </div>

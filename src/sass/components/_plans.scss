@@ -29,22 +29,36 @@
 .Plans {
   width: 327px;
   height: fit-content;
+  margin-inline: auto;
+  @include a.breakpoint(tablet) {
+    width: 100%;
+  }
+  @include a.breakpoint(laptop) {
+    width: 730px;
+    margin-inline: unset;
+  }
   .container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    @include a.breakpoint(laptop) {
+      align-items: flex-end;
+    }
     & .plan-box {
       width: 100%;
       height: fit-content;
-      margin-bottom: 110px;
+      margin-bottom: 96px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      &:last-child {
-        margin-bottom: 0;
+      @include a.breakpoint(laptop) {
+        &#plan15 {
+          margin-bottom: 0;
+        }
       }
+
       & .question {
         width: 100%;
         color: $clr--gray;
@@ -63,24 +77,28 @@
               &.rotate {
                 transform: rotate(0);
               }
-              & svg {
-                & path {
-                  &#disable {
-                    fill: $clr--light-cyan;
-                  }
-                }
+              & img {
+                //fill: $clr--light-cyan;
+                filter: brightness(0) saturate(100%) invert(79%) sepia(97%)
+                  saturate(2062%) hue-rotate(152deg) brightness(88%)
+                  contrast(84%);
               }
             }
           }
         }
         & h4 {
           width: 240px;
+          @include a.breakpoint(tablet) {
+            width: fit-content;
+            font-size: 2rem;
+            line-height: 3rem;
+          }
         }
         & .arrow {
-          transition: all 300ms ease-in-out;
+          transition: all 500ms ease-in-out;
 
           &.rotate {
-            transform: rotateZ(180deg);
+            transform: rotateZ(540deg);
           }
         }
       }
@@ -92,37 +110,48 @@
         justify-content: space-between;
         align-items: center;
         margin-top: 32px;
-        transition: all 1000ms ease-in-out;
+        transition: all 500ms ease-in-out;
+        @include a.breakpoint(tablet) {
+          width: 689px;
+          flex-direction: row;
+          margin-top: 40px;
+        }
+        @include a.breakpoint(laptop) {
+          width: 581px;
+        }
+        @include a.breakpoint(desktop) {
+          width: 730px;
+        }
         &.option11 {
           &.open {
             display: flex;
-            -webkit-animation: SHOW-BOX 1000ms ease-in-out;
-            -moz-animation: SHOW-BOX 1000ms ease-in-out;
-            animation: SHOW-BOX 1000ms ease-in-out;
+            -webkit-animation: SHOW-BOX 500ms ease-in-out;
+            -moz-animation: SHOW-BOX 500ms ease-in-out;
+            animation: SHOW-BOX 500ms ease-in-out;
           }
         }
         &.option12 {
           &.open {
             display: flex;
-            -webkit-animation: SHOW-BOX 1000ms ease-in-out;
-            -moz-animation: SHOW-BOX 1000ms ease-in-out;
-            animation: SHOW-BOX 1000ms ease-in-out;
+            -webkit-animation: SHOW-BOX 500ms ease-in-out;
+            -moz-animation: SHOW-BOX 500ms ease-in-out;
+            animation: SHOW-BOX 500ms ease-in-out;
           }
         }
         &.option13 {
           &.open {
             display: flex;
-            -webkit-animation: SHOW-BOX 1000ms ease-in-out;
-            -moz-animation: SHOW-BOX 1000ms ease-in-out;
-            animation: SHOW-BOX 1000ms ease-in-out;
+            -webkit-animation: SHOW-BOX 500ms ease-in-out;
+            -moz-animation: SHOW-BOX 500ms ease-in-out;
+            animation: SHOW-BOX 500ms ease-in-out;
           }
         }
         &.option14 {
           &.open {
             display: flex;
-            -webkit-animation: SHOW-BOX 1000ms ease-in-out;
-            -moz-animation: SHOW-BOX 1000ms ease-in-out;
-            animation: SHOW-BOX 1000ms ease-in-out;
+            -webkit-animation: SHOW-BOX 500ms ease-in-out;
+            -moz-animation: SHOW-BOX 500ms ease-in-out;
+            animation: SHOW-BOX 500ms ease-in-out;
           }
           &.disable {
             display: none;
@@ -131,9 +160,9 @@
         &.option15 {
           &.open {
             display: flex;
-            -webkit-animation: SHOW-BOX 1000ms ease-in-out;
-            -moz-animation: SHOW-BOX 1000ms ease-in-out;
-            animation: SHOW-BOX 1000ms ease-in-out;
+            -webkit-animation: SHOW-BOX 500ms ease-in-out;
+            -moz-animation: SHOW-BOX 500ms ease-in-out;
+            animation: SHOW-BOX 500ms ease-in-out;
           }
         }
       }
@@ -146,6 +175,19 @@
         color: $clr--dark-gray-blue;
         border-radius: 8px;
         transition: all 200ms ease-in-out;
+        @include a.breakpoint(tablet) {
+          width: 223px;
+          height: 250px;
+          margin-bottom: 0;
+        }
+        @include a.breakpoint(laptop) {
+          width: 186px;
+          height: 212px;
+        }
+        @include a.breakpoint(desktop) {
+          width: 228px;
+          height: 250px;
+        }
         & input[type='radio'] {
           display: none;
         }
@@ -162,6 +204,15 @@
           background-color: $clr--dark-cyan;
           color: $clr--light-cream;
           border-radius: 8px;
+          @include a.breakpoint(tablet) {
+            height: 250px;
+          }
+          @include a.breakpoint(laptop) {
+            height: 212px;
+          }
+          @include a.breakpoint(desktop) {
+            height: 250px;
+          }
         }
 
         & .option-label {
@@ -172,12 +223,37 @@
           flex-direction: column;
           justify-content: flex-start;
           align-items: flex-start;
+          @include a.breakpoint(tablet) {
+            width: 223px;
+            padding: 32px 25px 84px 25px;
+          }
+          @include a.breakpoint(laptop) {
+            width: 186px;
+            padding: 32px 18px 0px 18px;
+          }
+          @include a.breakpoint(desktop) {
+            width: 228px;
+            padding: 32px 28px 0px 28px;
+          }
           & .option-card-title {
             font-family: $ff--fraunces;
             font-size: 1.75rem;
             font-weight: 900;
             line-height: 2rem;
             margin-bottom: 8px;
+            @include a.breakpoint(tablet) {
+              margin-bottom: 24px;
+              font-size: 1.5rem;
+            }
+            @include a.breakpoint(laptop) {
+              margin-bottom: 16px;
+              font-size: 1.25rem;
+            }
+            @include a.breakpoint(desktop) {
+              margin-bottom: 24px;
+              font-size: 1.5rem;
+              line-height: 2rem;
+            }
           }
           & .option-card-description {
             font-family: $ff--barlow;

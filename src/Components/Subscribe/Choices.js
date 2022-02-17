@@ -1,10 +1,17 @@
 import React from 'react';
 import choices from '../../data/choices.json';
+import Line from '../Line';
+import MediaQuery from 'react-responsive';
 
 const Choices = () => {
   return (
     <div className="Choices">
-      <div className="line"></div>
+      <MediaQuery minWidth={740}>
+        <div className="line-insert-choices">
+          <Line />
+        </div>
+      </MediaQuery>
+
       <div className="container">
         {choices.map((choice, index) => {
           return (

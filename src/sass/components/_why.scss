@@ -6,6 +6,14 @@
   height: 1499px;
   margin-top: 120px;
   position: relative;
+  @include a.breakpoint(tablet) {
+    height: 863px;
+    margin-top: 144px;
+  }
+  @include a.breakpoint(laptop) {
+    height: 728px;
+    margin-top: 200px;
+  }
   & .why-container {
     width: 327px;
     height: 1499px;
@@ -14,11 +22,32 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    @include a.breakpoint(tablet) {
+      width: 688px;
+      height: 863px;
+    }
+    @include a.breakpoint(laptop) {
+      width: a.$width-lap;
+      height: 728px;
+    }
+    @include a.breakpoint(desktop) {
+      width: a.$width-desk;
+    }
     & .top {
       width: 100%;
       height: 902px;
       background: $clr--dark-gray-blue;
       border-radius: 10px;
+      @include a.breakpoint(tablet) {
+        height: 573px;
+      }
+      @include a.breakpoint(laptop) {
+        height: 577px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+      }
       & .top-box {
         width: 279px;
         height: 177px;
@@ -29,6 +58,24 @@
         align-items: center;
         color: $clr--light-cream;
         text-align: center;
+        @include a.breakpoint(tablet) {
+          width: 540px;
+          height: 149px;
+          margin: 56px 74px 70px 74px;
+          padding-inline: 22px;
+        }
+        @include a.breakpoint(laptop) {
+          height: 160px;
+          margin: unset;
+          margin-top: 100px;
+          padding-inline: 6px;
+          & .title {
+            h3 {
+              font-size: 2.5rem;
+              line-height: 3rem;
+            }
+          }
+        }
       }
     }
   }
@@ -41,6 +88,17 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    @include a.breakpoint(tablet) {
+      height: 584px;
+      top: 275px;
+    }
+    @include a.breakpoint(laptop) {
+      height: 382px;
+      top: 346px;
+      flex-direction: row;
+      justify-content: center;
+      gap: 30px;
+    }
     & .card {
       width: 279px;
       height: 382px;
@@ -51,6 +109,24 @@
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
+      @include a.breakpoint(tablet) {
+        width: 573px;
+        height: 180px;
+        padding-top: 0;
+        display: grid;
+        grid-template-columns: 126px 55px 344px 48px;
+        grid-template-rows: 41px 32px 16px 50px 41px;
+      }
+      @include a.breakpoint(laptop) {
+        width: clamp(277px, calc(17.3125rem + ((1vw - 9.8px) * 22.884)), 350px);
+        height: 382px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        grid-template-columns: unset;
+        grid-template-rows: unset;
+      }
       & .why-image {
         height: 72px;
         display: flex;
@@ -58,20 +134,66 @@
         justify-content: flex-start;
         align-items: center;
         margin-bottom: 56px;
+        @include a.breakpoint(tablet) {
+          grid-column: 1;
+          grid-row: 3/5;
+          width: 56px;
+          height: 56px;
+          padding-left: 70px;
+          padding-top: 6px;
+        }
+        @include a.breakpoint(laptop) {
+          grid-column: unset;
+          grid-row: unset;
+          width: 72px;
+          height: 72px;
+          padding-left: 0;
+          padding-top: 0;
+          margin-top: 72px;
+        }
         & img {
           width: 72px;
+          @include a.breakpoint(tablet) {
+            width: 56px;
+          }
+          @include a.breakpoint(laptop) {
+            width: 72px;
+          }
         }
       }
       & .why-title {
         text-align: center;
         color: $clr--light-cream;
         margin-bottom: 24px;
+        @include a.breakpoint(tablet) {
+          grid-column: 3;
+          grid-row: 2;
+          text-align: left;
+          margin-bottom: 0;
+        }
+        @include a.breakpoint(laptop) {
+          grid-column: unset;
+          grid-row: unset;
+          text-align: unset;
+          margin-bottom: 24px;
+        }
       }
       & .why-description {
         text-align: center;
         color: $clr--light-cream;
-
         padding-inline: 40px;
+        @include a.breakpoint(tablet) {
+          grid-column: 3;
+          grid-row: 4;
+          text-align: left;
+          padding-inline: 0;
+        }
+        @include a.breakpoint(laptop) {
+          grid-column: unset;
+          grid-row: unset;
+          text-align: center;
+          width: 255px;
+        }
       }
     }
   }

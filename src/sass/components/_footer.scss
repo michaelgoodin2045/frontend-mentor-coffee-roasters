@@ -6,6 +6,15 @@
   height: 346px;
   margin-top: 120px;
   margin-bottom: 72px;
+  @include a.breakpoint(tablet) {
+    height: 270px;
+    margin-top: 72px;
+  }
+  @include a.breakpoint(laptop) {
+    height: 120px;
+    margin-top: 168px;
+    margin-bottom: 88px;
+  }
   & .footer-container {
     width: 327px;
     height: 346px;
@@ -16,6 +25,23 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    @include a.breakpoint(tablet) {
+      width: 688px;
+      height: 270px;
+      padding: 54px 190px 54px 215px;
+    }
+    @include a.breakpoint(laptop) {
+      width: a.$width-lap;
+      height: 120px;
+      padding: 47px 85px;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    @include a.breakpoint(desktop) {
+      width: a.$width-desk;
+    }
     & .NavLinks {
       width: 122px;
       height: 93px;
@@ -23,6 +49,19 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
+      @include a.breakpoint(tablet) {
+        flex-direction: row;
+        width: 283px;
+        height: 15px;
+        margin-bottom: 32px;
+      }
+      @include a.breakpoint(laptop) {
+        margin-bottom: 0;
+        margin-right: 48px;
+      }
+      @include a.breakpoint(desktop) {
+        margin-right: 267px;
+      }
       & .nav-link {
         font-family: $ff--barlow;
         font-size: 0.75rem;

@@ -10,9 +10,26 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
+  @include a.breakpoint(tablet) {
+    width: 100%;
+    padding-inline: 40px;
+    position: unset;
+    height: 120px;
+  }
+  @include a.breakpoint(laptop) {
+    width: clamp(890px, calc(55.625rem + ((1vw - 9.8px) * 78.0564)), 1139px);
+    padding-inline: 0;
+    height: 113px;
+  }
+  @include a.breakpoint(desktop) {
+    width: clamp(1139px, calc(71.1875rem + ((1vw - 13px) * 100.7143)), 1280px);
+  }
   & .logo {
     & img {
       width: 163px;
+      @include a.breakpoint(tablet) {
+        width: 236px;
+      }
     }
   }
   & .NavLinks {
@@ -21,13 +38,33 @@
     width: 375px;
     height: 577px;
     top: 90px;
-    left: 0;
+    left: -24px;
+    @include a.breakpoint(tablet) {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      position: unset;
+      top: unset;
+      left: unset;
+    }
     & .nav-link {
       margin-bottom: 32px;
       text-transform: capitalize;
       font-family: $ff--fraunces;
       font-size: 1.5rem;
       font-weight: 800;
+      @include a.breakpoint(tablet) {
+        margin-bottom: 0;
+        font-family: $ff--barlow;
+        font-size: 0.75rem;
+        line-height: 0.9375rem;
+        letter-spacing: 0.92px;
+        margin-right: 32px;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
       & a {
         text-decoration: none;
         color: $clr--dark-gray-blue;

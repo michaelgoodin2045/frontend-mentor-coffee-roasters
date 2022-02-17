@@ -10,6 +10,29 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  @include a.breakpoint(tablet) {
+    width: 689px;
+    height: 366px;
+    align-items: flex-start;
+    margin-bottom: 144px;
+  }
+  @include a.breakpoint(laptop) {
+    width: clamp(689px, calc(43.0625rem + ((1vw - 9.8px) * 86.25)), 965px);
+    margin-top: 168px;
+    margin-inline: unset;
+    //margin-left: 40px;
+    padding-left: clamp(40px, calc(2.5rem + ((1vw - 9.8px) * 27.1739)), 165px);
+  }
+  @include a.breakpoint(desktop) {
+    width: 1045px;
+  }
+  @include a.breakpoint(big) {
+    padding-left: clamp(
+      165px,
+      calc(10.3125rem + ((1vw - 14.41px) * 29.2276)),
+      305px
+    );
+  }
   & .title {
     color: $clr--gray;
     margin-bottom: 72px;
@@ -20,6 +43,14 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    @include a.breakpoint(tablet) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    @include a.breakpoint(laptop) {
+      justify-content: flex-start;
+    }
     & .card {
       display: flex;
       flex-direction: column;
@@ -27,8 +58,44 @@
       align-items: center;
       color: $clr--dark-gray-blue;
       margin-bottom: 80px;
+      @include a.breakpoint(tablet) {
+        width: 223px;
+        height: 262px;
+        align-items: flex-start;
+        margin-bottom: 0;
+      }
+      @include a.breakpoint(laptop) {
+        width: clamp(223px, calc(13.9375rem + ((1vw - 9.8px) * 19.375)), 285px);
+        height: 262px;
+        margin-right: clamp(
+          1px,
+          calc(0.0625rem + ((1vw - 9.8px) * 29.375)),
+          95px
+        );
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+      @include a.breakpoint(desktop) {
+        width: 285px;
+        & .location-name {
+          width: 271px;
+        }
+      }
       &:last-child {
         margin-bottom: 0;
+      }
+      & h3 {
+        @include a.breakpoint(tablet) {
+          font-size: 1.5rem;
+        }
+        @include a.breakpoint(desktop) {
+          font-size: clamp(
+            1.5rem,
+            calc(1.5rem + ((1vw - 0.6125rem) * 2.2857)),
+            2rem
+          );
+        }
       }
       p {
         font-size: 1rem;

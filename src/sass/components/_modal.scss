@@ -1,0 +1,112 @@
+@use '../base/' as *;
+@use '../abstracts/' as a;
+
+.Modal {
+  display: none;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  &.open {
+    display: flex;
+  }
+  @include a.breakpoint(laptop) {
+    justify-content: center;
+  }
+  & .container {
+    width: 327px;
+    height: fit-content;
+    background: $clr--light-cream;
+    margin-top: 35px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    @include a.breakpoint(tablet) {
+      width: 540px;
+      margin-top: 214px;
+    }
+    @include a.breakpoint(laptop) {
+      margin-top: unset;
+    }
+    & .title {
+      width: 100%;
+      height: 88px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      background: $clr--dark-gray-blue;
+      color: $clr--light-cream;
+      padding: 28px 24px;
+      @include a.breakpoint(tablet) {
+        height: 136px;
+        padding: 48px 148px 40px 56px;
+      }
+    }
+    & .blurb-box {
+      width: 279px;
+      height: fit-content;
+      margin-inline: auto;
+      padding-top: 40px;
+      @include a.breakpoint(tablet) {
+        width: 428px;
+        padding-top: 57px;
+      }
+      h4 {
+        line-height: 2.5rem;
+        color: $clr--gray;
+        & .filler {
+          color: $clr--dark-cyan;
+        }
+        & .grind-summary {
+          &.disable {
+            display: none;
+          }
+        }
+      }
+    }
+    & .correct-box {
+      width: 279px;
+      height: 125px;
+      margin-inline: auto;
+      color: $clr--dark-gray-blue;
+      margin-bottom: 24px;
+      @include a.breakpoint(tablet) {
+        width: 428px;
+        height: 78px;
+        padding-right: 28px;
+        margin-bottom: 57px;
+      }
+    }
+    & .modal-btn-box {
+      margin-bottom: 24px;
+      @include a.breakpoint(tablet) {
+        margin-bottom: 56px;
+        width: 428px;
+        height: 56px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        & .month-cost {
+          color: $clr--dark-gray-blue;
+          & h2 {
+            line-height: 2.25px;
+          }
+        }
+      }
+      @include a.breakpoint(laptop) {
+        & .month-cost {
+          & h2 {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+}

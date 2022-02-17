@@ -1,0 +1,60 @@
+@use '../base/' as *;
+@use '../abstracts/' as a;
+
+.SelectMenu {
+  position: sticky;
+  top: 40px;
+  left: 0;
+  width: 235px;
+  height: fit-content;
+  & .card {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid $clr--gray-fade;
+    &:first-child {
+      height: 56px;
+      align-items: flex-end;
+    }
+    &:last-child {
+      height: 56px;
+      align-items: flex-start;
+      border-bottom: 0;
+    }
+    & .sidebar-link {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      font-size: 1.5rem;
+      text-decoration: none;
+      & .item-number {
+        margin-right: 24px;
+        color: $clr--gray-fade;
+        &.item11 {
+          color: $clr--light-cyan;
+        }
+      }
+      & .title {
+        color: $clr--gray-fade;
+      }
+      &:hover {
+        & .item-number,
+        .title {
+          color: $clr--gray;
+        }
+      }
+      &.active-link {
+        & .item-number,
+        .title {
+          color: $clr--dark-gray-blue;
+        }
+      }
+    }
+  }
+}

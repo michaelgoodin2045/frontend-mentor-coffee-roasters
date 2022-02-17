@@ -5,6 +5,15 @@
   width: 327px;
   height: fit-content;
   margin-inline: auto;
+  @include a.breakpoint(tablet) {
+    width: 689px;
+  }
+  @include a.breakpoint(laptop) {
+    width: a.$width-lap;
+  }
+  @include a.breakpoint(desktop) {
+    width: a.$width-desk;
+  }
   & .viewport {
     height: 500px;
     padding: 100px 24px;
@@ -20,15 +29,36 @@
     background-position: center;
     background-size: contain;
     border-radius: 10px;
+    @include a.breakpoint(tablet) {
+      background-image: url('../assets/home/tablet/image-hero-coffeepress.jpg');
+      padding: 104px 233px 104px 58px;
+      align-items: flex-start;
+    }
+    @include a.breakpoint(laptop) {
+      height: 600px;
+      background-image: url('../assets/home/desktop/image-hero-coffeepress.jpg');
+      background-size: cover;
+      padding: 116px 85px;
+    }
     & .title {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      @include a.breakpoint(tablet) {
+        align-items: flex-start;
+      }
     }
     & .blurb-box {
       text-align: center;
       margin-bottom: 15px;
+      @include a.breakpoint(tablet) {
+        text-align: left;
+      }
+      @include a.breakpoint(laptop) {
+        width: 400px;
+        margin-bottom: 24px;
+      }
     }
   }
 }

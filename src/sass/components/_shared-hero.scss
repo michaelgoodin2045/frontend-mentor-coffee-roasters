@@ -10,6 +10,29 @@
     background-position: center;
     background-size: contain;
     border-radius: 10px;
+    @include a.breakpoint(tablet) {
+      background-image: linear-gradient(
+          (to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1))
+        ),
+        url('../assets/about/tablet/image-hero-whitecup.jpg');
+    }
+    @include a.breakpoint(laptop) {
+      background-image: linear-gradient(
+          (to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1))
+        ),
+        url('../assets/about/desktop/image-hero-whitecup.jpg');
+      background-size: cover;
+    }
+  }
+  @include a.breakpoint(laptop) {
+    & .viewport {
+      & .title {
+        & h3 {
+          font-size: 2.5rem;
+          line-height: 3rem;
+        }
+      }
+    }
   }
 }
 
@@ -22,13 +45,51 @@
     background-position: center;
     background-size: cover;
     border-radius: 10px;
+    @include a.breakpoint(tablet) {
+      background-image: linear-gradient(
+          (to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1))
+        ),
+        url('../assets/plan/tablet/image-hero-blackcup.jpg');
+    }
+    @include a.breakpoint(laptop) {
+      background-image: linear-gradient(
+          (to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1))
+        ),
+        url('../assets/plan/desktop/image-hero-blackcup.jpg');
+      border-radius: 0;
+    }
     & .viewport {
       padding: 101px 24px 87px 24px;
       justify-content: flex-start;
+      @include a.breakpoint(tablet) {
+        padding: 127px 233px 126px 58px;
+      }
+      @include a.breakpoint(laptop) {
+        height: 450px;
+        padding: 134px 233px 134px 58px;
+        & .blurb-box {
+          width: 350px;
+        }
+      }
+      @include a.breakpoint(desktop) {
+        padding: 134px 233px 134px 85px;
+        & .blurb-box {
+          width: 445px;
+        }
+      }
       & .title {
         & h3 {
-          font-size: 40px;
+          font-size: 2.5rem;
           margin-bottom: 24px;
+          @include a.breakpoint(tablet) {
+            font-size: 3rem;
+          }
+          @include a.breakpoint(laptop) {
+            margin-bottom: 32px;
+          }
+          @include a.breakpoint(desktop) {
+            font-size: 4.5rem;
+          }
         }
       }
     }
@@ -39,6 +100,15 @@
   width: 327px;
   height: fit-content;
   margin-inline: auto;
+  @include a.breakpoint(tablet) {
+    width: 689px;
+  }
+  @include a.breakpoint(laptop) {
+    width: clamp(890px, calc(55.625rem + ((1vw - 9.8px) * 78.0564)), 1139px);
+  }
+  @include a.breakpoint(desktop) {
+    width: clamp(1139px, calc(71.1875rem + ((1vw - 13px) * 100.7143)), 1280px);
+  }
   & .viewport {
     width: 100%;
     height: 400px;
@@ -48,8 +118,23 @@
     justify-content: space-between;
     align-items: center;
     color: $clr--light-cream;
+    @include a.breakpoint(tablet) {
+      padding: 118px 233px 118px 58px;
+      align-items: flex-start;
+    }
+    @include a.breakpoint(laptop) {
+      padding: 137px 85px;
+      height: 450px;
+    }
+
     & .blurb-box {
       text-align: center;
+      @include a.breakpoint(tablet) {
+        text-align: left;
+      }
+      @include a.breakpoint(laptop) {
+        width: 445px;
+      }
     }
   }
 }

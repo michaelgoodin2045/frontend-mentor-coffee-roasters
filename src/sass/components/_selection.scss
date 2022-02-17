@@ -2,7 +2,7 @@
 @use '../abstracts/' as a;
 
 .Selection {
-  width: 375px;
+  width: clamp(327px, calc(20.4375rem + ((1vw - 3.27px) * 100)), 375px);
   height: fit-content;
   margin-top: 120px;
   margin-inline: auto;
@@ -10,4 +10,24 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  @include a.breakpoint(tablet) {
+    width: 689px;
+    margin-top: 144px;
+  }
+  @include a.breakpoint(laptop) {
+    width: 100%;
+    margin-top: 168px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    padding-inline: clamp(
+      7px,
+      calc(0.4375rem + ((1vw - 9.8px) * 22.884)),
+      80px
+    );
+  }
+  @include a.breakpoint(desktop) {
+    padding-inline: clamp(95px, calc(5.9375rem + ((1vw - 13px) * 50)), 405px);
+  }
 }

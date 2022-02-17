@@ -7,6 +7,19 @@
   margin-inline: auto;
   margin-top: 120px;
   position: relative;
+  @include a.breakpoint(tablet) {
+    width: 688px;
+    height: 648px;
+    margin-top: 144px;
+  }
+  @include a.breakpoint(laptop) {
+    width: a.$width-lap;
+    height: 562px;
+    margin-top: 168px;
+  }
+  @include a.breakpoint(desktop) {
+    width: a.$width-desk;
+  }
   & .viewport {
     width: 279px;
     height: 156px;
@@ -23,10 +36,44 @@
     border-radius: 10px;
     background-position: center;
     background-size: contain;
+    @include a.breakpoint(tablet) {
+      width: 573px;
+      height: 320px;
+      left: 58px;
+      background-image: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.1),
+          rgba(0, 0, 0, 0.1)
+        ),
+        url('../assets/about/tablet/image-quality.jpg');
+    }
+    @include a.breakpoint(laptop) {
+      width: clamp(300px, calc(18.75rem + ((1vw - 9.8px) * 48.4375)), 455px);
+      height: clamp(320px, calc(20rem + ((1vw - 9.8px) * 48.125)), 474px);
+      left: unset;
+      right: clamp(10px, calc(0.625rem + ((1vw - 9.8px) * 17.8571)), 85px);
+      background-image: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.1),
+          rgba(0, 0, 0, 0.1)
+        ),
+        url('../assets/about/desktop/image-quality.jpg');
+      background-size: cover;
+    }
+    @include a.breakpoint(desktop) {
+      width: 445px;
+      height: 474px;
+    }
   }
   & .top {
     width: 100%;
     height: 78px;
+    @include a.breakpoint(tablet) {
+      height: 160px;
+    }
+    @include a.breakpoint(laptop) {
+      height: 88px;
+    }
   }
   & .bottom {
     width: 100%;
@@ -34,6 +81,12 @@
     border-radius: 10px;
     background: $clr--dark-gray-blue;
     color: $clr--light-cream;
+    @include a.breakpoint(tablet) {
+      height: 488px;
+    }
+    @include a.breakpoint(laptop) {
+      height: 474px;
+    }
     & .text-box {
       width: 100%;
       height: 509px;
@@ -43,6 +96,41 @@
       justify-content: space-between;
       align-items: center;
       text-align: center;
+      @include a.breakpoint(tablet) {
+        padding: 224px 75px 67px 75px;
+        height: 197px;
+        & .title {
+          margin-bottom: 30px;
+        }
+      }
+      @include a.breakpoint(laptop) {
+        padding: 88px 85px;
+        height: 210px;
+        align-items: flex-start;
+        text-align: left;
+        & .title {
+          width: 517px;
+          & h3 {
+            font-size: clamp(
+              2rem,
+              calc(2rem + ((1vw - 0.6125rem) * 2.5)),
+              2.5rem
+            );
+            line-height: clamp(
+              2.5rem,
+              calc(2.5rem + ((1vw - 0.6125rem) * 2.5)),
+              3rem
+            );
+          }
+        }
+        & .blurb-box {
+          width: clamp(
+            395px,
+            calc(24.6875rem + ((1vw - 9.8px) * 38.125)),
+            517px
+          );
+        }
+      }
     }
   }
 }
